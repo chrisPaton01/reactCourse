@@ -1,5 +1,4 @@
 import './ExpenseForm.css';
-// comment change
 const ExpenseForm = () => {
   
   // default event object, which will create an event object when change happens
