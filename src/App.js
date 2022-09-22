@@ -33,6 +33,11 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = (saveExpenseData) => {
+    console.log('In App.js');
+    console.log(saveExpenseData);
+  };
+
   return (
     <div>
       <h2>Let's get started!</h2>
@@ -43,7 +48,7 @@ const App = () => {
       objects of the array. The values can then be used by the ExpenseItem.js
       file by including (props) in the ExpenseItem function
       */}
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
   );

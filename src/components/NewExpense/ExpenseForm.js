@@ -1,7 +1,7 @@
 import './ExpenseForm.css';
 import React, { useState } from 'react';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
@@ -36,7 +36,10 @@ const ExpenseForm = () => {
       // using default date constructor to format enteredDate which is a string
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
+
+    // invoking a function from the NewExpense inside this child component and
+    // passing it an object as a parameter
+    props.onSaveExpenseData(expenseData);
     // clearing the input values to empty strings once the form's been submitted
     setEnteredTitle('');
     setEnteredAmount('');
