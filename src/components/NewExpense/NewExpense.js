@@ -8,8 +8,9 @@ const NewExpense = (props) => {
     // ExpenseForm component
     const saveExpenseData = {
       ...expenseData,
-      id: Math.random().toString,
+      id: Math.random().toString(),
     };
+    console.log(saveExpenseData.id);
     props.onAddExpense(saveExpenseData);
   };
 
