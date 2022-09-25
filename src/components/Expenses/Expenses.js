@@ -14,9 +14,32 @@ const Expenses = (props) => {
 
   const showYearHandler = (selectedYear) => {
     setfilterYear(selectedYear);
-    console.log('Expenses.JS working');
     console.log(selectedYear + ' selectded');
   };
+
+  // array function returns a new array
+  const filteredExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filterYearState;
+  });
+
+  let noExpensesContentMessage = <p>No expenses found.</p>;
+
+  /* .map() creates a new array based on another array and lets you 
+    transform every element in the original array. This code makes it so
+    that the items shown in the UI is based on the items present in the 
+    mapped array 
+    */
+  if (filteredExpenses.length > 0) {
+    noExpensesContentMessage = filteredExpenses.map((expenses) => (
+      // key is used as an unique id to help react identify each data set
+      <ExpenseItem
+        key={expenses.id}
+        title={expenses.title}
+        amount={expenses.amount}
+        date={expenses.date}
+      />
+    ));
+  }
 
   return (
     <div>
@@ -25,7 +48,21 @@ const Expenses = (props) => {
           selected={filterYearState}
           onFilterYearSelect={showYearHandler}
         />
-        <ExpenseItem
+        {noExpensesContentMessage}
+
+        {/* 
+        {filteredExpenses.length === 0 && <p>No expenses found.</p>}
+        {filteredExpenses.length > 0 && filteredExpenses.map((expenses) => (
+            <ExpenseItem
+              key={expenses.id}
+              title={expenses.title}
+              amount={expenses.amount}
+              date={expenses.date}
+            />
+          ))}
+        
+        */}
+        {/*<ExpenseItem
           title={props.expenses[0].title}
           amount={props.expenses[0].amount}
           date={props.expenses[0].date}
@@ -44,7 +81,7 @@ const Expenses = (props) => {
           title={props.expenses[3].title}
           amount={props.expenses[3].amount}
           date={props.expenses[3].date}
-        />
+        /> */}
       </Card>
     </div>
   );
