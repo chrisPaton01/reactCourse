@@ -1,5 +1,5 @@
 import './Expenses.css';
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
 import ExpensesFilter from './ExpensesFilter';
 // ../ goes back one folder when searching through directories for imports
 import Card from '../UI/Card';
@@ -22,13 +22,14 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filterYearState;
   });
 
-  let noExpensesContentMessage = <p>No expenses found.</p>;
+  // let noExpensesContentMessage = <p>No expenses found.</p>;
 
   /* .map() creates a new array based on another array and lets you 
     transform every element in the original array. This code makes it so
     that the items shown in the UI is based on the items present in the 
     mapped array 
     */
+  /*
   if (filteredExpenses.length > 0) {
     noExpensesContentMessage = filteredExpenses.map((expenses) => (
       // key is used as an unique id to help react identify each data set
@@ -40,7 +41,7 @@ const Expenses = (props) => {
       />
     ));
   }
-
+  */
   return (
     <div>
       <Card className='expenses'>
@@ -48,20 +49,10 @@ const Expenses = (props) => {
           selected={filterYearState}
           onFilterYearSelect={showYearHandler}
         />
-        {noExpensesContentMessage}
+        {/* noExpensesContentMessage */}
 
-        {/* 
-        {filteredExpenses.length === 0 && <p>No expenses found.</p>}
-        {filteredExpenses.length > 0 && filteredExpenses.map((expenses) => (
-            <ExpenseItem
-              key={expenses.id}
-              title={expenses.title}
-              amount={expenses.amount}
-              date={expenses.date}
-            />
-          ))}
-        
-        */}
+        <ExpensesList expenses={filteredExpenses}/>
+
         {/*<ExpenseItem
           title={props.expenses[0].title}
           amount={props.expenses[0].amount}

@@ -29,24 +29,26 @@ const ExpenseItem = (props) => {
 
   // return contains all JSX code
   return (
-    <Card className='expense-item'>
-      {/* Outputting an Object won't work so it must be converted to a String or 
+    <li>
+      <Card className='expense-item'>
+        {/* Outputting an Object won't work so it must be converted to a String or 
       Number etc */}
-      {/* <div>{props.date.toISOString()}</div> */}
+        {/* <div>{props.date.toISOString()}</div> */}
 
-      {/* Takes the date from each prop which has an object and its properties 
+        {/* Takes the date from each prop which has an object and its properties 
       given to it by the component element in Apps.js. Each prop has an object 
       and it's properties. The dates of each object are then passed to the 
       ExpenseDate component
       */}
-      <ExpenseDate date={props.date} />
-      <div className='expense-item__description'>
-        <h2>{title}</h2>
-        <div className='expense-item__price'>£{props.amount}</div>
-      </div>
-      {/* simply point to arrow function, don't invoke it inside return */}
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+        <ExpenseDate date={props.date} />
+        <div className='expense-item__description'>
+          <h2>{title}</h2>
+          <div className='expense-item__price'>£{props.amount}</div>
+        </div>
+        {/* simply point to arrow function, don't invoke it inside return */}
+        <button onClick={clickHandler}>Change Title</button>
+      </Card>
+    </li>
   );
 };
 
